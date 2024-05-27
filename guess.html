@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error{color: red;}
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Guess the Number</h1>
+        <input type="number" value="0" class="num">
+        <div class="error"></div>
+        <button class="restart">restart</button>
+        <button class="submit">submit</button>
+    </main>
+    <script>
+        let enterNumber=document.getElementsByClassName('num')[0];
+        let submitButton=document.getElementsByClassName('submit')[0];
+        let restartButton=document.getElementsByClassName('restart')[0];
+        let errorDiv=document.getElementsByClassName('error')[0];
+
+        
+        let num=Math.ceil(Math.random()*(10-1)+1)
+        let getRandomNum=()=>{
+            num = Math.ceil(Math.random()*(10-1)+1)
+        }
+        let restartGame=()=>{
+            getRandomNum()
+            enterNumber.value=0
+        }
+        let submitGame=()=>{
+            console.log(typeof enterNumber.value)
+            let value= Number(enterNumber.value)
+            if(value===num){
+                errorDiv.textContent='Correct Answer';
+                errorDiv.style.color="green";
+            }
+            else{
+                errorDiv.textContent='Wrong Answer';
+                errorDiv.style.color="red";
+            }
+            
+
+        }
+        submitButton.addEventListener('click',submitGame)
+        restartButton.addEventListener('click',restartGame)
+    </script>
+</body>
+</html>
